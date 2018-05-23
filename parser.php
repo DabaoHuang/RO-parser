@@ -6,18 +6,22 @@
 
 ini_set('default_charset', 'utf-8');
 ini_set('mbstring.internal_encoding','UTF-8');
+ini_set('display_errors',0);
 
-include('../PHP.note/common.php');
-if( !in_array($argv[1], Array('monster','tower','item')) ) die('Error parameters.');
-include($_SERVER['HTTP_HOST'] . "/Library/C{$argv[1]}.php");
-$parser = new "C{$argv[1]}";
+require('../PHP.note/common.php');
 
-var_dump($parser);
+$folder = Array('monster','tower','item');
 
-// $content = preg_replace('/[\s|\n]/isU','',getCache('https://ro.fws.tw/db/endless/tower/all'));
+if( !in_array($argv[1], $folder) ) die('Error parameters.');
 
-// preg_match_all('/<div[^>]*>(.*)<\/div>/isU',$content,$matches);
+foreach ($folder as $foldername) {
+    if( !file_exists($foldername) ) mkdir($foldername);
+}
 
-// var_dump($matches);
+require("Library/C{$argv[1]}.php");
+$classname = "C{$argv[1]}";
+$parser = new $classname;
+
+echo "Done.\n";
 
 // file_put_contents('log.html',$content);

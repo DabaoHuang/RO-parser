@@ -1,17 +1,17 @@
 # RO PARSER INFO
- - ver.0
+ - ver.1.0
  - PHP 7
- - Mariadb 10.1
 
 ## DATA FROM
+  - [RO 手遊資料庫](https://ro.fws.tw/)
 
- RO 手遊資料庫
- https://ro.fws.tw/
+# DONE
+ - 爬塔資訊
 
 # FUTURE
- - 爬塔資訊 Insert
- - 怪物資訊 Insert
- - 物品資訊 Insert
+ - 最佳路徑搜尋
+ - 怪物資訊
+ - 物品資訊
  - RO-BOT
 
 # INCLUDE CLASS ON MY REPOSITORIES
