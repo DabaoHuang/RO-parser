@@ -1,5 +1,10 @@
 <?php 
 
+/**
+ * Author @ Dabao Huang
+ * Date   @ 2018/05/23
+ */
+
 Class Ctower extends Ccommon {
 
     var $content;
@@ -49,10 +54,6 @@ Class Ctower extends Ccommon {
         }
         echo "Tower monster update finish.\n";
         file_put_contents("tower/floorinfo.txt",serialize(base64_encode(json_encode($this->TowerInfo))));
-        // var_dump($this->Mimg);exit;
-        // var_dump($this->TowerInfo);exit;
-        // var_dump($matches);
-        // exit;
     }
 
     private function TowerLevel()

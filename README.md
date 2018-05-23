@@ -14,6 +14,10 @@
  - 物品資訊
  - RO-BOT
 
+## TARGET NOW
+ - RO-BOT 可用的資料
+ - 簡化爬塔資訊
+
 # INCLUDE CLASS ON MY REPOSITORIES
  - PHP.note/common.php
 
