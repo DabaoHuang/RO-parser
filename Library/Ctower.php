@@ -32,6 +32,7 @@ Class Ctower extends Ccommon {
         preg_match_all('/<div[^>]*class=\"[^\"]*level_monsters[^\"]*\"[^>]*>(.*)<\/div>/isU',$this->content,$matches);
 
         foreach ($matches[1] as $row) {
+
             preg_match_all('/\/db\/endless\/report\/(.*)\/error/isU',$row,$info);
 
             if( !isset($info) ) continue;
@@ -42,6 +43,7 @@ Class Ctower extends Ccommon {
                     'transit' => $info[0],
                     'Tower' => $this->TLv
                 );
+                echo "Get {$info[0]}線 \n";
             }
 
             preg_match_all('/<a[^>]*class=\"monster_mini[^\"]*\"[^>]*background-image: url\(\/(.*)\.(png|jpg)\)\;/isU',$row,$Minfo);
@@ -51,7 +53,9 @@ Class Ctower extends Ccommon {
                 $Mrow = $Mrow[(count($Mrow)-1)];
                $this->TowerInfo[$info[0]]['Tower'][$info[1]][] = $this->Mimg[$Mrow];
             }
+
         }
+
         echo "Tower monster update finish.\n";
         file_put_contents("tower/floorinfo.txt",serialize(base64_encode(json_encode($this->TowerInfo))));
     }
@@ -85,7 +89,10 @@ Class Ctower extends Ccommon {
                 $MCname = preg_replace('/<span class=\"after\">DENY<\/span>/isU','',$matches[1][$i]);
                 $this->Mimg[$Mname]['img'] = $this->baseurl . $matches2[1][0];
                 $this->Mimg[$Mname]['Cname'] = $MCname;
+
+                echo "Get {$MCname} => {$this->Mimg[$Mname]['img']} \n";
             }
+            
             $this->Mimg['unknow']['img'] = $this->baseurl . '/images/unknow.png';
             $this->Mimg['unknow']['Cname'] = '未知';
             file_put_contents($cachepath,json_encode($this->Mimg));

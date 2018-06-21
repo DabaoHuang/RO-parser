@@ -5,7 +5,6 @@ $test = json_decode(base64_decode(unserialize(file_get_contents('tower/floorinfo
 $search_array = array('犬妖首領');
 $final = false;
 
-
 // 線路
 foreach ($test as $rows) {
 
